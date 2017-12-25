@@ -15,7 +15,6 @@ taxonomy:
         - weechat
         - raspberrypi
 ---
-Test
 <!--excerpt-->
 #### 1. Objective: 
 Use RPi as a webserver to run weechat and configure weechat

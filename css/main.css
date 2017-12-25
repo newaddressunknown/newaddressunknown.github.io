@@ -68,3 +68,11 @@ h2 {
 .articlelink {
 	padding-left: 8px;
 }
+.articleexcerpt {
+	padding-left: 8px;
+	margin-top: 0px;
+}
+.articleexcerpt p {
+	margin-top: 0px;
+	margin-bottom: 4px;
+}

@@ -12,7 +12,7 @@ order: 1
 			<th>{{ post.date | date: "%B %e, %Y" }}</th><th class="articlelink" ><a href="{{ post.url }}">{{ post.title }}</a></th>
 	      </tr>
 	      <tr>
-			<th></th><th>{{ post.excerpt }}</th>
+			<th></th><th class="articleexcerpt">{{ post.excerpt }}</th>
 	      </tr>
 	      {% endfor %}
 	    </table>
