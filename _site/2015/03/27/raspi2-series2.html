@@ -38,24 +38,19 @@
   <div id="post">
     <h1></h1>
     <!--excerpt-->
-
-
-<h4>1. Objective: change SSH settings, change network (static ip), configure DynDNS </h4>
-
+<h4 id="1-objectivechange-ssh-settings-change-network-static-ip-configure-dyndns">1. Objective: change SSH settings, change network (static ip), configure DynDNS </h4>
 <p>Setup: Lenovo Yoga 13 (2012) Arch
 Hardware Requirements: Raspberry Pi 2, MicroSD Card, ssh access</p>
-
-<h4>2. Realisation:</h4>
-
+<h4 id="2-realisation">2. Realisation:</h4>
 <ul>
-<li>I assume, you have finished the first part of this series or the state of your device resembles it.</li>
-<li>SSH to your RasPi2.
-<code>$ ssh &lt;user&gt;@&lt;RasPi2_ip&gt;</code></li>
-<li>Change ssh login method to two-factor authentication
-Why? --> Checking your server logs should give you the answer. 
+  <li>I assume, you have finished the first part of this series or the state of your device resembles it.</li>
+  <li>SSH to your RasPi2.
+` $ ssh <user>@<RasPi2_ip>`</RasPi2_ip></user></li>
+  <li>Change ssh login method to two-factor authentication
+Why? –&gt; Checking your server logs should give you the answer. 
 Install FreeOTP / Google Authenticator on your phone (Android/iPhone/Blackberry)
 Install libpam-google-authenticator from AUR
-<code>$ yaourt -Sy libpam-google-authenticator</code>
+` $ yaourt -Sy libpam-google-authenticator<code class="highlighter-rouge">
 You will recieve an error when building. 
 ➟ Edit PKGBUILD , and change line 7 (might be a little different)
  arch=('i686' 'x86_64')
@@ -63,18 +58,19 @@ You will recieve an error when building. 
  arch=('i686' 'x86_64' 'armv7h')
 Continue and finish the build / installation process
 Edit pam config file
-<code>$ sudo nano /etc/pam.d/sshd</code>
+</code> $ sudo nano /etc/pam.d/sshd<code class="highlighter-rouge">
 Add the following line
  auth    required    pam_google_authenticator.so
 Edit ssh server config file
-<code>$ sudo nano /etc/ssh/sshd_config</code>
+</code> $ sudo nano /etc/ssh/sshd_config<code class="highlighter-rouge">
 ➟ Add the following line (line 76 for me)
  ChallengeResponseAuthentication yes
 Run google authenticator and note your secret key, verification code, emergency scratch code
-<code>$ google-authenticator</code>
+</code> $ google-authenticator`
 Answer yes (time-based token), answer yes (update /home/<username>/.google_authenticator), answer yes (disallow multiple uses), answer no (increase token validity), answer yes (rate limiting)
 Open FreeOTP or Google Authenticator; Scan the QRCode that is provided at the given url, or
-Add the key manually:
+Add the key manually:</username></li>
+</ul>
 <username>@<hostname>
 Secret ➟ Secret Key
 Type ➟ TOTP
@@ -82,19 +78,19 @@ Digits ➟ 6
 Algorythm ➟ SHA1
 Restart sshd service
 Login with:
-Passwort ➟ <user password>
-Verification Code ➟ <dynamically generated key></li>
-<li>Configure static ip
+Passwort ➟ <user password="">
+Verification Code ➟ <dynamically generated="" key="">
+* Configure static ip
 Find the adapter name: most likely eth0 for the RPi2
 Disable the dhcpcd service to prevent the RPi requesting the offered ip.
-<code> $ sytemctl disable dhcpcd@eth0.service</code>
+` $ sytemctl disable dhcpcd@eth0.service`
 Make sure, that all other services, that might interfer with our configuration are disabled.
-<code> $ sytemctl disable ifplugd@eth0.service</code>
-<code> $ sytemctl disable netctl-auto@eth0.service</code>
-<code> $ sytemctl disable netctl-ifplugd@eth0.service</code>
+` $ sytemctl disable ifplugd@eth0.service`
+` $ sytemctl disable netctl-auto@eth0.service`
+` $ sytemctl disable netctl-ifplugd@eth0.service`
 I ran into **** problems because I accidently activated several netctl services in a desperate attempt to get this to work.
 Create ethernet adapter configuration file²
-<code> $ sudo nano /etc/systemd/network/eth0.network</code>
+` $ sudo nano /etc/systemd/network/eth0.network`
 Replace eth0 with your adapter name if neccessary
 Add the following text to the adapter service file
 [match]
@@ -104,23 +100,20 @@ DNS=8.8.8.8
 Address=<youripadress>
 Gateway=<yourrouterip>
 Further information can be found here².
-Reboot and login</li>
-<li>Configure DynDNS with ddclient
+Reboot and login
+* Configure DynDNS with ddclient
 I use spdns.de as DynDNS provider, ddclient to register the changed ip with the provider
 Install ddclient
-<code>$ sudo pacman -Sy ddclient</code>
-Edit ddclient.conf --> Explanation here
-<code> $ sudo nano /etc/ddclient/ddclient.conf</code>
-
-<h4>3. Sources:</h4>
-
-<p>¹https://wiki.archlinux.org/index.php/Google_Authenticator 
+` $ sudo pacman -Sy ddclient`
+Edit ddclient.conf --&gt; Explanation here
+` $ sudo nano /etc/ddclient/ddclient.conf`
+#### 3. Sources:
+¹https://wiki.archlinux.org/index.php/Google_Authenticator 
 ²https://wiki.archlinux.org/index.php/systemd-networkd
 ³https://www.digitalocean.com/community/tutorials/how-to-protect-ssh-with-two-factor-authentication
 ⁴http://www.howtogeek.com/121650/how-to-secure-ssh-with-google-authenticators-two-factor-authentication/
-⁵http://en.wikipedia.org/wiki/Google_Authenticator</p></li>
-</ul>
-
+⁵http://en.wikipedia.org/wiki/Google_Authenticator
+</yourrouterip></youripadress></dynamically></user></hostname></username>
 
   </div>
 </div>

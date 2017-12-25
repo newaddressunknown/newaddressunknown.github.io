@@ -38,48 +38,40 @@
   <div id="post">
     <h1></h1>
     <!--excerpt-->
-
-
-<h4>1. Initial situation: </h4>
-
+<h4 id="1-initial-situation">1. Initial situation: </h4>
 <p>Lenovo Yoga 13 (2012) with Manjaro 0.8.10 no WiFi</p>
 
-<h4>2. Objective: Install RTL8723AU WiFi driver</h4>
-
+<h4 id="2-objectiveinstall-rtl8723au-wifi-driver">2. Objective: Install RTL8723AU WiFi driver</h4>
 <p>Requirements: knowing basic Linux shell commands
 Resources: install packages <em>make</em>, <em>kernel-headers</em></p>
 
-<h4>3. Realisation: </h4>
-
+<h4 id="3-realisation">3. Realisation: </h4>
 <ul>
-<li>First, you need to get an internet connection up. Three possibilities usually work very fast. (a) A WiFi usb stick, (b) tethering via Mobile Phone or (c) a USB to ethernet dongle.</li>
-<li>Download the latest WiFI drivers from https://github.com/lwfinger/rtl8723au</li>
-<li>Install the base-devel package group, as this group includes for example the make tool to build the module later.
-<code>sudo pacman -S base-devel</code></li>
-<li>Upgrade the kernel. Making the module under the 3.12 Manjaro Kernel did not work for me, so you can install the latest available stable kernel. 
-<code>sudo mhwd-kernel -i linux315</code>
+  <li>First, you need to get an internet connection up. Three possibilities usually work very fast. (a) A WiFi usb stick, (b) tethering via Mobile Phone or (c) a USB to ethernet dongle.</li>
+  <li>Download the latest WiFI drivers from https://github.com/lwfinger/rtl8723au</li>
+  <li>Install the base-devel package group, as this group includes for example the make tool to build the module later.
+` sudo pacman -S base-devel`</li>
+  <li>Upgrade the kernel. Making the module under the 3.12 Manjaro Kernel did not work for me, so you can install the latest available stable kernel. 
+` sudo mhwd-kernel -i linux315`
 This command will install the 3.15 Linux Kernel without removing the old one. I highly recommend, that you do not delete your old kernel, before the system is up and running without problems.
 Kernel 3.15 comes with the RTL8723AU module build in. After booting up, I could see WiFi networks, but I was not able to connect to any of them.
 Only take further steps if you have the same problem. Otherwise it should work fine.</li>
-<li>Remove the 3.15 r8723au driver
-<code>sudo modprobe -r r8723au</code>
+  <li>Remove the 3.15 r8723au driver
+` sudo modprobe -r r8723au<code class="highlighter-rouge">
 Extract the driver archive.
 Move to the drive folder (for example)
-<code>cd ../home/downloads/rtl8723au-master/</code></li>
-<li>Install lwfingers Realtek 8723au driver
+</code> cd ../home/downloads/rtl8723au-master/`</li>
+  <li>Install lwfingers Realtek 8723au driver
 Move to the extracted driver archive, compile and install the driver.
-<code>sudo make</code>
-<code>sudo make install</code>
-<code>sudo modprobe rtl8723au</code></li>
+` sudo make<code class="highlighter-rouge">
+</code> sudo make install<code class="highlighter-rouge">
+</code> sudo modprobe rtl8723au`</li>
 </ul>
 
-
-<h4>4. Outlook: </h4>
-
+<h4 id="4-outlook">4. Outlook: </h4>
 <p>The next guide will show how to enable WiFi in Manjaro for the Lenovo Yoga 13 because the Realtek 8723AU is currently not supported by any kernel. </p>
 
-<h4>5. Sources:</h4>
-
+<h4 id="5-sources">5. Sources:</h4>
 <p>https://github.com/lwfinger/rtl8723au
 https://wiki.manjaro.org/index.php?title=Create_Manjaro_Packages</p>
 

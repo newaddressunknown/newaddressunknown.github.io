@@ -38,63 +38,56 @@
   <div id="post">
     <h1></h1>
     <!--excerpt-->
-
-
-<h4>1. Objective: </h4>
-
+<h4 id="1-objective">1. Objective: </h4>
 <p>Install ALARM - Arch Linux ARM on the raspberry 2, change SSH settings, change network (static ip)
 Setup: Lenovo Yoga 13 (2012) Arch
 Hardware Requirements: Raspberry Pi 2, MicroSD Card</p>
-
-<h4>2. Realisation:</h4>
-
+<h4 id="2-realisation">2. Realisation:</h4>
 <ul>
-<li>Read and work through this guide¹.
-Command not found error when formatting --> check dosfstools package status</li>
-<li>SSH to your RasPi2. The ip can usually be found in your router entries.        
-<code>$ ssh root@&lt;RasPi2_ip\&gt;</code></li>
-<li>Change root password        
-<code>$ passwd</code></li>
-<li>Change SSH port
-Why? --> Yes, if someone does a portscan on your system a changed port is of little help ². Still, many attackers seem to routinely look for open ssh systems on port 22.
-<code>$ nano /etc/ssh/sshd_config</code>
+  <li>Read and work through this guide¹.
+Command not found error when formatting –&gt; check dosfstools package status</li>
+  <li>SSH to your RasPi2. The ip can usually be found in your router entries.        
+<code class="highlighter-rouge">$ ssh root@&lt;RasPi2_ip\&gt;</code></li>
+  <li>Change root password        
+<code class="highlighter-rouge">$ passwd</code></li>
+  <li>Change SSH port
+Why? –&gt; Yes, if someone does a portscan on your system a changed port is of little help ². Still, many attackers seem to routinely look for open ssh systems on port 22.
+<code class="highlighter-rouge">$ nano /etc/ssh/sshd_config</code>
 then change #Port 22 to
-Port  <yourportnumber></li>
-<li>Log out and try to login with
-<code>$ ssh root@&lt;raspi2_ip&gt; -p  &lt;yourportnumber&gt;</code></li>
-<li>Update the system and install necessary software
-<code>$ pacman -Syu</code>
-<code>$ pacman -Sy screen wget base-devel unzip</code></li>
-<li>Create additional user
-<code>$ useradd -m -G wheel, power -s /bin/bash &lt;username&gt;</code>
+Port  <yourportnumber></yourportnumber></li>
+  <li>Log out and try to login with
+<code class="highlighter-rouge">$ ssh root@&lt;raspi2_ip&gt; -p  &lt;yourportnumber&gt;</code></li>
+  <li>Update the system and install necessary software
+<code class="highlighter-rouge">$ pacman -Syu</code>
+<code class="highlighter-rouge">$ pacman -Sy screen wget base-devel unzip</code></li>
+  <li>Create additional user
+<code class="highlighter-rouge">$ useradd -m -G wheel, power -s /bin/bash &lt;username&gt;</code>
 -G (groups) wheel for using sudo, power to reboot the device / -m (user directory) creates user directory at /home/<username> / -s (shell) usually bash
 Change new user password
-<code>$ passwd &lt;username&gt;</code>
+`$ passwd <username>`
 Add user group wheel to sudoers file
 You have to do this as root
-<code>$ nano /etc/sudoers ALL=(ALL) ALL)</code>
+`$ nano /etc/sudoers ALL=(ALL) ALL)`
 Uncomment user group wheel
-Reboot and login as <username></li>
-<li>Install yaourt from source ³
+Reboot and login as <username></username></username></username></li>
+  <li>Install yaourt from source ³
 Check that base-devel is installed
-<code>$ sudo pacman -Sy base-devel</code>
+<code class="highlighter-rouge">$ sudo pacman -Sy base-devel</code>
 First install package-query (yaourt dependency)
-<code>$ wget https://aur.archlinux.org/packages/pa/package-query/package-query.tar.gz</code>
-<code>$ tar -xvzf package-query.tar.gz</code>
-<code>$ cd package-query</code>
-<code>$ makepkg -si</code>
+<code class="highlighter-rouge">$ wget https://aur.archlinux.org/packages/pa/package-query/package-query.tar.gz</code>
+<code class="highlighter-rouge">$ tar -xvzf package-query.tar.gz</code>
+<code class="highlighter-rouge">$ cd package-query</code>
+<code class="highlighter-rouge">$ makepkg -si</code>
 Then install yaourt 
 Move to upper folder 
-<code>$ cd ../ </code>
-<code>$ wget https://aur.archlinux.org/packages/ya/yaourt/yaourt.tar.gz</code>
-<code>$ tar -xvzf yaourt.tar.gz</code>
-<code>$ cd yaourt</code>
-<code>$ makepkg -si</code></li>
+<code class="highlighter-rouge">$ cd ../ </code>
+<code class="highlighter-rouge">$ wget https://aur.archlinux.org/packages/ya/yaourt/yaourt.tar.gz</code>
+<code class="highlighter-rouge">$ tar -xvzf yaourt.tar.gz</code>
+<code class="highlighter-rouge">$ cd yaourt</code>
+<code class="highlighter-rouge">$ makepkg -si</code></li>
 </ul>
 
-
-<h4>3. Sources:</h4>
-
+<h4 id="3-sources">3. Sources:</h4>
 <p>¹ http://archlinuxarm.org/platforms/armv7/broadcom/raspberry-pi-2
 ² https://www.adayinthelifeof.nl/2012/03/12/why-putting-ssh-on-another-port-than-22-is-bad-idea/
 ³ https://wiki.archlinux.de/title/yaourt</p>
