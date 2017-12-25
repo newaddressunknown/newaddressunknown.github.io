@@ -1,0 +1,114 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+   <link rel="stylesheet" href="/css/main.css" />
+    <title>RasPi2 Series III - tmux + weechat</title>
+  </head>
+  <body>
+    <section>
+      <div class="wrapper">
+
+      <div class="box title">
+		    <!--<a href="/">-->
+	    </div>
+
+
+      <div class="box header">
+		    <h2>RasPi2 Series III - tmux + weechat</h2>
+	    </div>
+
+	    <div class="box sidebar">
+		  <ul>
+        
+	      
+	      <li>
+			<a href="/">Articles</a>
+	      </li>
+	      
+	      <li>
+			<a href="/examples">Case Files</a>
+	      </li>
+	      
+    	</ul>
+	    </div>
+
+      <div class="box content">
+        <div class="content">
+  <div id="post">
+    <h1></h1>
+    <p>Test</p>
+
+<!--excerpt-->
+
+
+<h4>1. Objective: </h4>
+
+<p>Use RPi as a webserver to run weechat and configure weechat
+Setup: Raspberry Pi 2, ssh</p>
+
+<h4>2. Realisation:</h4>
+
+<ul>
+<li>Install tmux and weechat 
+<code>$ sudo pacman -Sy tmux weechat</code>
+tmux vs screen battle fans read on here³</li>
+<li>Create new tmux session
+<code>$ tmux new -s &lt;session_name&gt;</code>
+Start weechat
+<code>$ weechat</code></li>
+<li>Configure Weechat
+Add and connect to freenode server
+<code>/server add freenode irc.freenode.net</code>
+<code>/connect freenode</code>
+Change and register your nickname
+<code>/nick &lt;yournickname&gt;</code>
+<code>/set irc.server_default.nicks "&lt;yournickname&gt;,&lt;yournickname2&gt;"</code>
+<code>/msg NickServ REGISTER &lt;password&gt; &lt;yourmail&gt;</code>
+You will recieve a confirmation mail with a <personalkey>
+<code>/msg NickServ VERIFY REGISTER &lt;yournick&gt; &lt;personalkey&gt;</code>
+Add and connect to freenode server
+<code>/server add freenode irc.freenode.net</code>
+<code>/connect freenode</code>
+Join a channel
+<code>/join #archlinux.de</code>
+Autoconnect /-join
+<code>/set irc.server.freenode.autoconnect on</code>
+<code>/set irc.server.freenode.autojoin "#archlinux.de"</code>
+<code>/save</code></li>
+<li>Further Weechat configuration
+<code>/script</code>
+Select buffers.pl and type i 
+Enable ssl 
+<code>/set irc.server.freenode.addresses "chat.freenode.net/7000"</code>
+<code>/set irc.server.freenode.ssl on</code>
+Auto-authenticate with nickserv
+<code>/set irc.server.freenode.command "/msg NickServ IDENTIFY &lt;password&gt;"</code>
+Please decide for yourself wether it is a good idea to store the password in plain text in the config file.
+Save, restart and enjoy
+<code>/save</code>
+<code>/quit</code></li>
+<li>Detach session
+To leave tmux and return to terminal while keeping the session alive, press
+Ctrl + b then d</li>
+<li>SSH and auto attach tmux
+<code>$ ssh &lt;user&gt;@&lt;hostname&gt; -p &lt;customport&gt; -t tmux attach -t &lt;seesionname&gt;</code>
+
+<h4>3. Sources:</h4>
+
+<p>¹http://www.turnkeylinux.org/blog/tmux-screen-alternative
+²https://robots.thoughtbot.com/a-tmux-crash-course
+³http://www.wikivs.com/wiki/Screen_vs_tmux
+⁴https://weechat.org/files/doc/devel/weechat_quickstart.en.html</p></li>
+</ul>
+
+
+  </div>
+</div>
+
+      </div>
+
+      </div>
+    </section>
+  </body>
+</html>
