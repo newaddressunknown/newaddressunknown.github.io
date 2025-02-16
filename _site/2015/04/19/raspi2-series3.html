@@ -44,20 +44,20 @@ Setup: Raspberry Pi 2, ssh</p>
 <h4 id="2-realisation">2. Realisation:</h4>
 <ul>
   <li>Install tmux and weechat 
-<code class="highlighter-rouge">$ sudo pacman -Sy tmux weechat</code>
+<code class="language-plaintext highlighter-rouge">$ sudo pacman -Sy tmux weechat</code>
 tmux vs screen battle fans read on here³</li>
   <li>Create new tmux session
-<code class="highlighter-rouge">$ tmux new -s &lt;session_name&gt;</code>
+<code class="language-plaintext highlighter-rouge">$ tmux new -s &lt;session_name&gt;</code>
 Start weechat
-<code class="highlighter-rouge">$ weechat</code></li>
+<code class="language-plaintext highlighter-rouge">$ weechat</code></li>
   <li>Configure Weechat
 Add and connect to freenode server
-<code class="highlighter-rouge">/server add freenode irc.freenode.net</code>
-<code class="highlighter-rouge">/connect freenode</code>
+<code class="language-plaintext highlighter-rouge">/server add freenode irc.freenode.net</code>
+<code class="language-plaintext highlighter-rouge">/connect freenode</code>
 Change and register your nickname
-<code class="highlighter-rouge">/nick &lt;yournickname&gt;</code>
-<code class="highlighter-rouge">/set irc.server_default.nicks "&lt;yournickname&gt;,&lt;yournickname2&gt;"</code>
-<code class="highlighter-rouge">/msg NickServ REGISTER &lt;password&gt; &lt;yourmail&gt;</code>
+<code class="language-plaintext highlighter-rouge">/nick &lt;yournickname&gt;</code>
+<code class="language-plaintext highlighter-rouge">/set irc.server_default.nicks "&lt;yournickname&gt;,&lt;yournickname2&gt;"</code>
+<code class="language-plaintext highlighter-rouge">/msg NickServ REGISTER &lt;password&gt; &lt;yourmail&gt;</code>
 You will recieve a confirmation mail with a <personalkey>
 `/msg NickServ VERIFY REGISTER <yournick> <personalkey>`
 Add and connect to freenode server
@@ -70,22 +70,22 @@ Autoconnect /-join
 `/set irc.server.freenode.autojoin "#archlinux.de"`
 `/save`</personalkey></yournick></personalkey></li>
   <li>Further Weechat configuration
-<code class="highlighter-rouge">/script</code>
+<code class="language-plaintext highlighter-rouge">/script</code>
 Select buffers.pl and type i 
 Enable ssl 
-<code class="highlighter-rouge">/set irc.server.freenode.addresses "chat.freenode.net/7000"</code>
-<code class="highlighter-rouge">/set irc.server.freenode.ssl on</code>
+<code class="language-plaintext highlighter-rouge">/set irc.server.freenode.addresses "chat.freenode.net/7000"</code>
+<code class="language-plaintext highlighter-rouge">/set irc.server.freenode.ssl on</code>
 Auto-authenticate with nickserv
-<code class="highlighter-rouge">/set irc.server.freenode.command "/msg NickServ IDENTIFY &lt;password&gt;"</code>
+<code class="language-plaintext highlighter-rouge">/set irc.server.freenode.command "/msg NickServ IDENTIFY &lt;password&gt;"</code>
 Please decide for yourself wether it is a good idea to store the password in plain text in the config file.
 Save, restart and enjoy
-<code class="highlighter-rouge">/save</code>
-<code class="highlighter-rouge">/quit</code></li>
+<code class="language-plaintext highlighter-rouge">/save</code>
+<code class="language-plaintext highlighter-rouge">/quit</code></li>
   <li>Detach session
 To leave tmux and return to terminal while keeping the session alive, press
 Ctrl + b then d</li>
   <li>SSH and auto attach tmux
-<code class="highlighter-rouge">$ ssh &lt;user&gt;@&lt;hostname&gt; -p &lt;customport&gt; -t tmux attach -t &lt;seesionname&gt;</code>
+<code class="language-plaintext highlighter-rouge">$ ssh &lt;user&gt;@&lt;hostname&gt; -p &lt;customport&gt; -t tmux attach -t &lt;seesionname&gt;</code>
     <h4 id="3-sources">3. Sources:</h4>
     <p>¹http://www.turnkeylinux.org/blog/tmux-screen-alternative
 ²https://robots.thoughtbot.com/a-tmux-crash-course

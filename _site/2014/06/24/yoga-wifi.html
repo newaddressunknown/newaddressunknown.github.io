@@ -57,14 +57,14 @@ This command will install the 3.15 Linux Kernel without removing the old one. I 
 Kernel 3.15 comes with the RTL8723AU module build in. After booting up, I could see WiFi networks, but I was not able to connect to any of them.
 Only take further steps if you have the same problem. Otherwise it should work fine.</li>
   <li>Remove the 3.15 r8723au driver
-` sudo modprobe -r r8723au<code class="highlighter-rouge">
+` sudo modprobe -r r8723au<code class="language-plaintext highlighter-rouge">
 Extract the driver archive.
 Move to the drive folder (for example)
 </code> cd ../home/downloads/rtl8723au-master/`</li>
   <li>Install lwfingers Realtek 8723au driver
 Move to the extracted driver archive, compile and install the driver.
-` sudo make<code class="highlighter-rouge">
-</code> sudo make install<code class="highlighter-rouge">
+` sudo make<code class="language-plaintext highlighter-rouge">
+</code> sudo make install<code class="language-plaintext highlighter-rouge">
 </code> sudo modprobe rtl8723au`</li>
 </ul>
 

@@ -50,7 +50,7 @@ Hardware Requirements: Raspberry Pi 2, MicroSD Card, ssh access</p>
 Why? –&gt; Checking your server logs should give you the answer. 
 Install FreeOTP / Google Authenticator on your phone (Android/iPhone/Blackberry)
 Install libpam-google-authenticator from AUR
-` $ yaourt -Sy libpam-google-authenticator<code class="highlighter-rouge">
+` $ yaourt -Sy libpam-google-authenticator<code class="language-plaintext highlighter-rouge">
 You will recieve an error when building. 
 ➟ Edit PKGBUILD , and change line 7 (might be a little different)
  arch=('i686' 'x86_64')
@@ -58,11 +58,11 @@ You will recieve an error when building. 
  arch=('i686' 'x86_64' 'armv7h')
 Continue and finish the build / installation process
 Edit pam config file
-</code> $ sudo nano /etc/pam.d/sshd<code class="highlighter-rouge">
+</code> $ sudo nano /etc/pam.d/sshd<code class="language-plaintext highlighter-rouge">
 Add the following line
  auth    required    pam_google_authenticator.so
 Edit ssh server config file
-</code> $ sudo nano /etc/ssh/sshd_config<code class="highlighter-rouge">
+</code> $ sudo nano /etc/ssh/sshd_config<code class="language-plaintext highlighter-rouge">
 ➟ Add the following line (line 76 for me)
  ChallengeResponseAuthentication yes
 Run google authenticator and note your secret key, verification code, emergency scratch code

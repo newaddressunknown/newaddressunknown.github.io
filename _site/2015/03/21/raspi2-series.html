@@ -47,21 +47,21 @@ Hardware Requirements: Raspberry Pi 2, MicroSD Card</p>
   <li>Read and work through this guide¹.
 Command not found error when formatting –&gt; check dosfstools package status</li>
   <li>SSH to your RasPi2. The ip can usually be found in your router entries.        
-<code class="highlighter-rouge">$ ssh root@&lt;RasPi2_ip\&gt;</code></li>
+<code class="language-plaintext highlighter-rouge">$ ssh root@&lt;RasPi2_ip\&gt;</code></li>
   <li>Change root password        
-<code class="highlighter-rouge">$ passwd</code></li>
+<code class="language-plaintext highlighter-rouge">$ passwd</code></li>
   <li>Change SSH port
 Why? –&gt; Yes, if someone does a portscan on your system a changed port is of little help ². Still, many attackers seem to routinely look for open ssh systems on port 22.
-<code class="highlighter-rouge">$ nano /etc/ssh/sshd_config</code>
+<code class="language-plaintext highlighter-rouge">$ nano /etc/ssh/sshd_config</code>
 then change #Port 22 to
 Port  <yourportnumber></yourportnumber></li>
   <li>Log out and try to login with
-<code class="highlighter-rouge">$ ssh root@&lt;raspi2_ip&gt; -p  &lt;yourportnumber&gt;</code></li>
+<code class="language-plaintext highlighter-rouge">$ ssh root@&lt;raspi2_ip&gt; -p  &lt;yourportnumber&gt;</code></li>
   <li>Update the system and install necessary software
-<code class="highlighter-rouge">$ pacman -Syu</code>
-<code class="highlighter-rouge">$ pacman -Sy screen wget base-devel unzip</code></li>
+<code class="language-plaintext highlighter-rouge">$ pacman -Syu</code>
+<code class="language-plaintext highlighter-rouge">$ pacman -Sy screen wget base-devel unzip</code></li>
   <li>Create additional user
-<code class="highlighter-rouge">$ useradd -m -G wheel, power -s /bin/bash &lt;username&gt;</code>
+<code class="language-plaintext highlighter-rouge">$ useradd -m -G wheel, power -s /bin/bash &lt;username&gt;</code>
 -G (groups) wheel for using sudo, power to reboot the device / -m (user directory) creates user directory at /home/<username> / -s (shell) usually bash
 Change new user password
 `$ passwd <username>`
@@ -72,19 +72,19 @@ Uncomment user group wheel
 Reboot and login as <username></username></username></username></li>
   <li>Install yaourt from source ³
 Check that base-devel is installed
-<code class="highlighter-rouge">$ sudo pacman -Sy base-devel</code>
+<code class="language-plaintext highlighter-rouge">$ sudo pacman -Sy base-devel</code>
 First install package-query (yaourt dependency)
-<code class="highlighter-rouge">$ wget https://aur.archlinux.org/packages/pa/package-query/package-query.tar.gz</code>
-<code class="highlighter-rouge">$ tar -xvzf package-query.tar.gz</code>
-<code class="highlighter-rouge">$ cd package-query</code>
-<code class="highlighter-rouge">$ makepkg -si</code>
+<code class="language-plaintext highlighter-rouge">$ wget https://aur.archlinux.org/packages/pa/package-query/package-query.tar.gz</code>
+<code class="language-plaintext highlighter-rouge">$ tar -xvzf package-query.tar.gz</code>
+<code class="language-plaintext highlighter-rouge">$ cd package-query</code>
+<code class="language-plaintext highlighter-rouge">$ makepkg -si</code>
 Then install yaourt 
 Move to upper folder 
-<code class="highlighter-rouge">$ cd ../ </code>
-<code class="highlighter-rouge">$ wget https://aur.archlinux.org/packages/ya/yaourt/yaourt.tar.gz</code>
-<code class="highlighter-rouge">$ tar -xvzf yaourt.tar.gz</code>
-<code class="highlighter-rouge">$ cd yaourt</code>
-<code class="highlighter-rouge">$ makepkg -si</code></li>
+<code class="language-plaintext highlighter-rouge">$ cd ../ </code>
+<code class="language-plaintext highlighter-rouge">$ wget https://aur.archlinux.org/packages/ya/yaourt/yaourt.tar.gz</code>
+<code class="language-plaintext highlighter-rouge">$ tar -xvzf yaourt.tar.gz</code>
+<code class="language-plaintext highlighter-rouge">$ cd yaourt</code>
+<code class="language-plaintext highlighter-rouge">$ makepkg -si</code></li>
 </ul>
 
 <h4 id="3-sources">3. Sources:</h4>
